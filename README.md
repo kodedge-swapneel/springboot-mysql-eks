@@ -34,12 +34,16 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
 7. Once the EC2 instance and MySql databases are in Running/Active state. Connect MySql database from local machine. 
     - Open terminal on local machine and cd into ec2 key pair directory.
     - Then run the following command: 
-    - ``` ssh -i "YOUR_EC2_KEY" -L LOCAL_PORT:RDS_ENDPOINT:REMOTE_PORT EC2_USER@EC2_HOST -N -f ```
+        ``` 
+         ssh -i "YOUR_EC2_KEY" -L LOCAL_PORT:RDS_ENDPOINT:REMOTE_PORT EC2_USER@EC2_HOST -N -f 
+       ```
     - Replace YOUR_EC2_KEY with your actual key pair name and other values accordingly.
 8. Then open database client and connect to database.
 9. Clone this repository.
 10. From the terminal cd into your project directory and build project using command: 
-    - ``` MYSQL_HOSTNAME=127.0.0.1 MYSQL_PORT=3306 MYSQL_DATABASE=ytlecture MYSQL_USERNAME=root MYSQL_PASSWORD=your_password ./gradlew clean build ```
+    - ``` 
+       MYSQL_HOSTNAME=127.0.0.1 MYSQL_PORT=3306 MYSQL_DATABASE=ytlecture MYSQL_USERNAME=root MYSQL_PASSWORD=your_password ./gradlew clean build 
+      ```
     - or to build without running test run this command ``` ./gradlew clean assemble ``` 
     
 11. Create docker repository in AWS ECS service. Give it name as ```springboot-mysql-eks ``` 
@@ -68,9 +72,15 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
          ```eksctl create cluster -f cluster.yaml
          ```
 4. Once the cluster is created, then run following commands:
-   1. ```kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/crds?ref=master"```
-   2. ```helm repo add eks https://aws.github.io/eks-charts```
-   3. ```helm repo update eks```
+   1. ```
+      kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/crds?ref=master"
+      ```
+   2. ```
+      helm repo add eks https://aws.github.io/eks-charts
+      ```
+   3. ```
+      helm repo update eks
+      ```
    4. ``` 
       helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
           --namespace kube-system \
@@ -78,8 +88,12 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
           --set serviceAccount.create=false \
           --set serviceAccount.name=aws-load-balancer-controller
       ```
-   5. ```kubectl -n kube-system rollout status deployment aws-load-balancer-controller```
-   6. ```kubectl get deployment -n kube-system aws-load-balancer-controller```
+   5. ```
+      kubectl -n kube-system rollout status deployment aws-load-balancer-controller
+      ```
+   6. ```
+      kubectl get deployment -n kube-system aws-load-balancer-controller
+      ```
 5. Once the application load balancer is ready. Open new terminal and cd into project directory.
 6. Run the command to deploy application : ```helm install mychart ytchart ```
 7. Check the deployments using ``` kubectl get all```
