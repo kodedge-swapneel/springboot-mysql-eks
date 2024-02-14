@@ -112,3 +112,11 @@ curl -X GET 'http://localhost:8080/getAmount?sourceCurrency=USD&targetCurrency=A
 ```
 
 ### Note : On the actual production environment, do not commit file with credentials like we have mentioned in secrets.yaml file. 
+
+### Make sure to delete all the component in AWS after your practice. 
+   1. Run command to delete the cluster ```eksctl delete cluster -f cluster.yaml```
+   2. If you get any error, manually stop the EC2 instances and delete Auto-Scaling group.
+   3. Go to Cloudformation and delete all the stacks.
+   4. Delete MySql database manually.
+   5. Delete NAT gateway from VPC
+   6. Delete VPC
