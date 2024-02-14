@@ -60,7 +60,10 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
    3. For more and updated information [Click here](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html).
 2. Create IAM Policy for AWS Load Balancer Controller. For more information [Click here.](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
    1. Open new terminal. CD into application repository ```cluster``` directory. 
-   2. Get policy document using command : ``` curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json```
+   2. Get policy document using command : 
+       ``` 
+       curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
+       ```
    3. Or you can use policy from repo using cluster/iam_policy.json (Optional)
    4. Apply the policy using command :
       ``` 
@@ -95,7 +98,10 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
       kubectl get deployment -n kube-system aws-load-balancer-controller
       ```
 5. Once the application load balancer is ready. Open new terminal and cd into project directory.
-6. Run the command to deploy application : ```helm install mychart ytchart ```
+6. Run the command to deploy application : 
+   ```
+   helm install mychart ytchart 
+   ```
 7. Check the deployments using ``` kubectl get all```
 8. Go into EC2 service in AWS account. Select AWS Load balancer and copy DNS name to test application.
    
