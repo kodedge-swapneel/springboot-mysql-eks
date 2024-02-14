@@ -7,6 +7,7 @@ In this project, I have demonstrated:
 2. Deployed and setup MySql database in private subnet using Amazon RDS service.
 3. Create EKS cluster in private subnet and deploy springboot application.
 4. Deployed Internet facing AWS Application load balance to access to application.
+5. Connect to MySql database which deployed in private subnet from local machine.
 
 Here I have created REST API's to add and retrieve ExchangeRate in the MySql database.
 
@@ -24,7 +25,7 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
 1. Setup Custom VPC in AWS account using VPC service including NAT Gateway and Internet Gateway.
 2. Create Security Group having inbound rule with access from anywhere. Select VPC created in Step-1 while creating Security group (Note. You can create multiple security groups with restricted access.).
 3. Create MySql database subnet group having private subnet. (using Amazon RDS service).
-4. Create MySql database and used subnet group created in Step-3. Also use existing security group created in Step-2
+4. Create MySql database and use subnet group created in Step-3. Also use existing security group created in Step-2
 5. Create EC2 instance key pair and download it on local machine.
 6. Launch EC2 instance. 
     - Use EC2 instance key pair created in step-5 while launching EC2 instance.
