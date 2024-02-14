@@ -13,9 +13,10 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
 
 ### Prerequisites:
  - [Docker](https://docs.docker.com/engine/install/) or [Docker alternative - Colima](https://github.com/abiosoft/colima)
- - AWS Account with configured access from local machine
+ - AWS Account with [configured access from local machine](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) and [AWS CLI installation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
  - [Helm](https://helm.sh/docs/intro/install/)
  - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+ - [eksctl](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html) or [From Official eksctl website](https://eksctl.io/installation/)
  - IDE and JDK
  - MySql Client: [DBeaver](https://dbeaver.io/download/)
 
