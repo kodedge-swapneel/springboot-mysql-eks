@@ -33,7 +33,7 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
     - Use existing security group which created in Step-2.
 7. Once the EC2 instance and MySql databases are in Running/Active state. Connect MySql database from local machine. 
     - Open terminal on local machine and cd into ec2 key pair directory.
-    - Change perimssion of ec2 key pair file using command : ```chmod 0400 ec2-db-key-pair.pem```
+    - Change perimssion of ec2 key pair file using command : ```chmod 0400 ec2-db-key-pair.pem``` (Note: here ec2-db-key-pair.pem is file which is downloaded when we created ec2-key. Change name accordingly.)
     - Then run the following command: 
         ``` 
          ssh -i "YOUR_EC2_KEY" -L LOCAL_PORT:RDS_ENDPOINT:REMOTE_PORT EC2_USER@EC2_HOST -N -f 
