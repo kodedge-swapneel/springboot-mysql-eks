@@ -1,4 +1,4 @@
-# Deploy Springboot application with MySql database in AWS EKS (Amazon Elastic Kubernetes Service) 
+# Deploy Springboot application with MySql database in Amazon EKS (Amazon Elastic Kubernetes Service) 
 
 ## [Click here to watch the video for demonstration.]()
 
