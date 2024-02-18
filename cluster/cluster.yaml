@@ -28,7 +28,7 @@ nodeGroups:
     minSize: 3
     maxSize: 5
     privateNetworking: true
-    ssh: # import public key from file
+    ssh:
       allow: true
       publicKeyName: ec2-yt-key
     iam:
