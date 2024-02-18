@@ -1,6 +1,6 @@
-# Deploy Springboot application with MySql database in Amazon EKS (Amazon Elastic Kubernetes Service) 
+# Deploy Spring Boot application with MySql database in Amazon EKS (Amazon Elastic Kubernetes Service) 
 
-## [Click here to watch the video for demonstration.]()
+## [Click here to watch the video for demonstration.](https://youtu.be/aXOB4tR0ONU)
 
 In this project, I have demonstrated: 
 1. Create and setup custom VPC with private and public subnet having NAT gateway and Internet gateway.
@@ -24,22 +24,22 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
 ## Perform following steps for application deployment:
 
 1. Setup Custom VPC in AWS account using VPC service including NAT Gateway and Internet Gateway.
-2. Create Security Group having inbound rule with access from anywhere. Select VPC created in Step-1 while creating Security group (Note. You can create multiple security groups with restricted access.).
-3. Create MySql database subnet group having private subnet. (using Amazon RDS service).
-4. Create MySql database and use subnet group created in Step-3. Also use existing security group created in Step-2
-5. Create EC2 instance key pair and download it on local machine.
+2. Create a Security Group having inbound rule with access from anywhere. Select VPC created in Step-1 while creating Security group (Note. You can create multiple security groups with restricted access.).
+3. Create a MySql database subnet group having a private subnet. (using Amazon RDS service).
+4. Create a MySql database and use the subnet group created in Step-3. Also use existing security group created in Step-2
+5. Create an EC2 instance key pair and download it on a local machine.
 6. Launch EC2 instance. 
     - Use EC2 instance key pair created in step-5 while launching EC2 instance.
-    - Use existing security group which created in Step-2.
+    - Use the existing security group which was created in Step-2.
 7. Once the EC2 instance and MySql databases are in Running/Active state. Connect MySql database from local machine. 
     - Open terminal on local machine and cd into ec2 key pair directory.
-    - Change perimssion of ec2 key pair file using command : ```chmod 0400 ec2-db-key-pair.pem``` (Note: here ec2-db-key-pair.pem is file which is downloaded when we created ec2-key. Change name accordingly.)
+    - Change permission of ec2 key pair file using command : ```chmod 0400 ec2-db-key-pair.pem``` (Note: here ec2-db-key-pair.pem is the file which is downloaded when we created ec2-key. Change name accordingly.)
     - Then run the following command: 
         ``` 
          ssh -i "YOUR_EC2_KEY" -L LOCAL_PORT:RDS_ENDPOINT:REMOTE_PORT EC2_USER@EC2_HOST -N -f 
        ```
     - Replace YOUR_EC2_KEY with your actual key pair name and other values accordingly.
-8. Then open database client and connect to database.
+8. Then open the database client and connect to the database.
 9. Clone this repository.
 10. From the terminal cd into your project directory and build project using command: 
     - ``` 
@@ -47,8 +47,8 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
       ```
     - or to build without running test run this command ``` ./gradlew clean assemble ``` 
     
-11. Create docker repository in AWS ECS service. Give it name as ```springboot-mysql-eks ``` 
-12. Follow the push commands from AWS ECS repository push command options. (make sure docker is started on local machine.).
+11. Create a docker repository in AWS ECS service. Give it name as ```springboot-mysql-eks ``` 
+12. Follow the push commands from AWS ECS repository push command options. (make sure docker is started on the local machine.).
 
 ## AWS Application Load Balancer setup steps:
 1. Tags all the subnet with the following tags:
@@ -60,7 +60,7 @@ Here I have created REST API's to add and retrieve ExchangeRate in the MySql dat
        - ```value - 1 ``` 
    3. For more and updated information [Click here](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html).
 2. Create IAM Policy for AWS Load Balancer Controller. For more information [Click here.](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
-   1. Open new terminal. CD into application repository ```cluster``` directory. 
+   1. Open a new terminal. CD into application repository ```cluster``` directory. 
    2. Get policy document using command : 
        ``` 
        curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
@@ -133,12 +133,12 @@ curl -X POST http://localhost:8080/addExchangeRate \
 curl -X GET 'http://localhost:8080/getAmount?sourceCurrency=USD&targetCurrency=AUD'
 ```
 
-### Note : On the actual production environment, do not commit file with credentials like we have mentioned in secrets.yaml file. 
+### Note : In the actual production environment, do not commit files with credentials like we have mentioned in secrets.yaml file. 
 
 ### Make sure to delete all the component in AWS after your practice. 
    1. Run command to delete the cluster ```eksctl delete cluster -f cluster.yaml```
-   2. If you get any error, manually stop the EC2 instances and delete Auto-Scaling group.
+   2. If you get any error, manually stop the EC2 instances and delete the Auto-Scaling group.
    3. Go to Cloudformation and delete all the stacks.
    4. Delete MySql database manually.
-   5. Delete NAT gateway from VPC
-   6. Delete VPC
+   5. Delete NAT gateway from VPC.
+   6. Delete VPC.
